@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoApp.MainPage">
+   
+    <ScrollView>
+        <Grid>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             Margin="30,30,30,10">
+
+                    <Label Text="Agenda" 
+                           TextColor="White" 
+                           FontSize="Large" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout>
+                    <ListView x:Name="AgendaModel">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame Margin="20,5">
+                                        <Label Text="{Binding EntradaAgenda}"/>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+            <AbsoluteLayout Margin="20">
+                <Frame AbsoluteLayout.LayoutFlags="All"
+                       AbsoluteLayout.LayoutBounds="0, 1, 0.95, 0.1"                  
+                       Padding="1">
+                    <Entry Placeholder="Digite aqui!"
+                           x:Name="EntradaAgenda"/>
+                </Frame>
+                <Button AbsoluteLayout.LayoutFlags="PositionProportional"
+                        AbsoluteLayout.LayoutBounds="1, 0.985, 50, 50"
+                        Text="+" 
+                        FontSize="Medium" 
+                        FontAttributes="Bold" 
+                        TextColor="White"
+                        BackgroundColor="Black"
+                        Command="{Binding AddAgendaItemCommand}"
+                        CommandParameter="{Binding NewAgendaItem}"
+                        x:Name="btnAdd"/>
+
+            </AbsoluteLayout>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

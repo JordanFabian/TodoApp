@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TodoApp.Models"
+             xmlns:viewModels="clr-namespace:TodoApp.ViewModels"
+             x:DataType="viewModels:AddUpdateAgendaDetailViewModel"
+             x:Class="TodoApp.Views.AddUpdateAgendaDetail"
+             Title="Agenda">
+
+    <Grid>
+        <VerticalStackLayout Margin="20, 15">
+        <Entry
+            Text="{Binding AgendaDetail.AgendaConteudo}"
+            Placeholder="Digite aqui!"/>
+         <DatePicker 
+             MinimumDate="2023, 01, 01"
+             Format="dd/mm/yyyy"
+             Date="{Binding AgendaDetail.Date}"/>
+        </VerticalStackLayout>
+    <AbsoluteLayout>
+    <Button
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.99, 0.975, 50, 50"
+            Text="+" 
+            FontSize="Medium" 
+            FontAttributes="Bold" 
+            TextColor="White"
+            BackgroundColor="#1c1c1c"
+            Command="{Binding AddUpdateAgendaCommand}"/>
+    </AbsoluteLayout>
+    </Grid>
+</ContentPage>

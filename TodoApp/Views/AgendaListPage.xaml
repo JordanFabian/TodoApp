@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TodoApp.Models"
+             xmlns:viewModels="clr-namespace:TodoApp.ViewModels"
+             x:DataType="viewModels:AgendaListPageViewModel"
+             x:Class="TodoApp.Views.AgendaListPage"
+             Title="Agenda">
+    <Grid>
+    <VerticalStackLayout Margin="20">
+            <CollectionView ItemsSource="{Binding Agenda}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:AgendaModel">
+                        <Frame Margin="20, 5" BackgroundColor="#1c1c1c">
+                            <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding AgendaConteudo}" FontSize="Large" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                                <Label Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="Large" TextColor="White"  HorizontalOptions="End"/>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:AgendaListPageViewModel}}, Path=DisplayActionCommand}" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+        <AbsoluteLayout>
+        <Button
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.99, 0.975, 50, 50"
+            Text="+" 
+            FontSize="Medium" 
+            FontAttributes="Bold" 
+            TextColor="White"
+            BackgroundColor="#1c1c1c"
+            Command="{Binding AddUpdateAgendaCommand}" />
+        </AbsoluteLayout>
+    </Grid>
+</ContentPage>
